@@ -96,8 +96,8 @@ public class ProtoTypeAdapter
 
     private Builder(EnumSerialization enumSerialization, CaseFormat fromFieldNameFormat,
         CaseFormat toFieldNameFormat) {
-      this.serializedNameExtensions = new HashSet<>();
-      this.serializedEnumValueExtensions = new HashSet<>();
+      this.serializedNameExtensions = new HashSet();
+      this.serializedEnumValueExtensions = new HashSet();
       setEnumSerialization(enumSerialization);
       setFieldNameSerializationFormat(fromFieldNameFormat, toFieldNameFormat);
     }
@@ -279,7 +279,7 @@ public class ProtoTypeAdapter
               if (jsonElement.isJsonArray()) {
                 // Handling array
                 Collection<EnumValueDescriptor> enumCollection =
-                    new ArrayList<>(jsonElement.getAsJsonArray().size());
+                    new ArrayList(jsonElement.getAsJsonArray().size());
                 for (JsonElement element : jsonElement.getAsJsonArray()) {
                   enumCollection.add(
                       findValueByNameAndExtension(fieldDescriptor.getEnumType(), element));

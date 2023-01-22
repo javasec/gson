@@ -246,14 +246,14 @@ Gson by default serializes any `java.util.Map` implementation as a JSON object. 
 
 ```java
 Gson gson = new Gson();
-Map<String, String> stringMap = new LinkedHashMap<>();
+Map<String, String> stringMap = new LinkedHashMap();
 stringMap.put("key", "value");
 stringMap.put(null, "null-entry");
 
 // Serialization
 String json = gson.toJson(stringMap); // ==> json is {"key":"value","null":"null-entry"}
 
-Map<Integer, Integer> intMap = new LinkedHashMap<>();
+Map<Integer, Integer> intMap = new LinkedHashMap();
 intMap.put(2, 4);
 intMap.put(3, 6);
 
@@ -291,7 +291,7 @@ class PersonName {
 }
 
 Gson gson = new GsonBuilder().enableComplexMapKeySerialization().create();
-Map<PersonName, Integer> complexMap = new LinkedHashMap<>();
+Map<PersonName, Integer> complexMap = new LinkedHashMap();
 complexMap.put(new PersonName("John", "Doe"), 30);
 complexMap.put(new PersonName("Jane", "Doe"), 35);
 
@@ -299,7 +299,7 @@ complexMap.put(new PersonName("Jane", "Doe"), 35);
 String json = gson.toJson(complexMap);
 // ==> json is [[{"firstName":"John","lastName":"Doe"},30],[{"firstName":"Jane","lastName":"Doe"},35]]
 
-Map<String, String> stringMap = new LinkedHashMap<>();
+Map<String, String> stringMap = new LinkedHashMap();
 stringMap.put("key", "value");
 // Serialization; non-complex map is serialized as a regular JSON object
 String json = gson.toJson(stringMap); // json is {"key":"value"}

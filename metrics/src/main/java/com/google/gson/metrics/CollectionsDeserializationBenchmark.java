@@ -45,7 +45,7 @@ public class CollectionsDeserializationBenchmark {
   @BeforeExperiment
   void setUp() throws Exception {
     this.gson = new Gson();
-    List<BagOfPrimitives> bags = new ArrayList<>();
+    List<BagOfPrimitives> bags = new ArrayList();
     for (int i = 0; i < 100; ++i) {
       bags.add(new BagOfPrimitives(10L, 1, false, "foo"));
     }
@@ -69,7 +69,7 @@ public class CollectionsDeserializationBenchmark {
       StringReader reader = new StringReader(json);
       JsonReader jr = new JsonReader(reader);
       jr.beginArray();
-      List<BagOfPrimitives> bags = new ArrayList<>();
+      List<BagOfPrimitives> bags = new ArrayList();
       while(jr.hasNext()) {
         jr.beginObject();
         long longValue = 0;
@@ -107,7 +107,7 @@ public class CollectionsDeserializationBenchmark {
       StringReader reader = new StringReader(json);
       JsonReader jr = new JsonReader(reader);
       jr.beginArray();
-      List<BagOfPrimitives> bags = new ArrayList<>();
+      List<BagOfPrimitives> bags = new ArrayList();
       while(jr.hasNext()) {
         jr.beginObject();
         BagOfPrimitives bag = new BagOfPrimitives();
